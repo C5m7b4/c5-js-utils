@@ -6,6 +6,7 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "testWatch":"mocha src/**/*.js --watch",
     "test":"mocha src/**/*.js"
   },
   "keywords": [],
