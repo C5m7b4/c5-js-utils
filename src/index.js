@@ -19,6 +19,4 @@ const isValid = (val) => {
   return true;
 };
 
-// testing only
-const myVariable = "";
-console.log("result: " + isValid(myVariable));
+module.exports = { isValid };
