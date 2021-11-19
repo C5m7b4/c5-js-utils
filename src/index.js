@@ -75,7 +75,63 @@ const formatDate = (date) => {
   return "";
 };
 
-const stringDate = "1/1/2021 5:00 pm";
-// const newDate = new Date(stringDate);
-console.log(formatDate(stringDate));
-module.exports = { isValid, isValidDate, formatDate };
+const pad = (input, desiredLength, padChar, direction = "left") => {
+  if (typeof input != "string") return input;
+  if (typeof desiredLength === "undefined" || desiredLength === null) {
+    return input;
+  }
+  if (typeof desiredLength != "number") return input;
+  if (typeof padChar === "undefined" || padChar === null) {
+    return input;
+  }
+  if (typeof padChar != "string") return input;
+
+  if (desiredLength <= input.length) {
+    return input;
+  }
+  const charsToPad = desiredLength - input.length;
+  // eslint-disable-next-line
+  const padding = [...Array(Number(charsToPad))].map((c, i) => {
+    return padChar;
+  });
+
+  if (direction.toLowerCase() === "left") {
+    return padding.join("") + input;
+  } else {
+    return input + padding.join("");
+  }
+};
+
+const getDayOfWeek = (d) => {
+  if (!isValid(d)) {
+    return "";
+  }
+  try {
+    const myDate = new Date(d);
+    const dayOfWeek = myDate.getDay();
+    if (isNaN(dayOfWeek)) {
+      return "";
+    }
+    switch (dayOfWeek) {
+      case 0:
+        return "Sunday";
+      case 1:
+        return "Monday";
+      case 2:
+        return "Tuesday";
+      case 3:
+        return "Wednesday";
+      case 4:
+        return "Thursday";
+      case 5:
+        return "Friday";
+      case 6:
+        return "Saturday";
+    }
+  } catch {
+    return "";
+  }
+};
+
+console.log(getDayOfWeek("1/40/2021"));
+module.exports = { isValid, isValidDate, formatDate, pad, getDayOfWeek };

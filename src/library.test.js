@@ -1,5 +1,11 @@
 /* eslint-disable no-undef */
-const { isValid, isValidDate, formatDate } = require("./index");
+const {
+  isValid,
+  isValidDate,
+  formatDate,
+  pad,
+  getDayOfWeek,
+} = require("./index");
 var assert = require("assert");
 
 describe("isValid", () => {
@@ -72,5 +78,54 @@ describe("formatDate", () => {
     const stringDate = "1/1/2021 5:00 pm";
     const newDate = new Date(stringDate);
     assert.equal(formatDate(newDate), "1/1/2021");
+  });
+});
+
+describe("pad", () => {
+  it("should return the object passed in when passing in an object. Only works on strings", () => {
+    const myObj = { name: "mike", age: 47 };
+    assert.equal(pad(myObj), myObj);
+  });
+  it("should return entire string when desiredLength is undefined", () => {
+    assert(pad("123"), "123");
+    assert(pad("123", undefined), "123");
+  });
+  it("should return entire string when desiredLength is null", () => {
+    assert.equal(pad("123", null), "123");
+  });
+  it("should return the entire string when the desiredLength is not a number", () => {
+    assert.equal(pad("123", "5"), "123");
+  });
+  it("should return entire string when padchar is undefined", () => {
+    assert.equal(pad("123", 5), "123");
+    assert.equal(pad("123", 5, undefined), "123");
+  });
+  it("should return entire string when padchar is null", () => {
+    assert.equal(pad("123", 5, null), "123");
+  });
+  it("should return entire string when padChar is not a string", () => {
+    assert.equal(pad("123", 5, 5), "123");
+  });
+  it("should return entire string if desiredLength is <= the length of the input", () => {
+    assert.equal(pad("123", 3, "0"), "123");
+  });
+  it("should return 00123 when input is '123' and desiredLength = 5 and padChar = '0'", () => {
+    assert.equal(pad("123", 5, "0"), "00123");
+  });
+  it("should return 12300 when desiredLength = 5 and padChar = '0' and direction='right", () => {
+    assert.equal(pad("123", 5, "0", "right"), "12300");
+  });
+});
+
+describe.only("getDayOfWeek", () => {
+  it("should return an empty string when no value is passed to it", () => {
+    assert.equal(getDayOfWeek(), "");
+  });
+  it("should return an empty string when a non valid date string is passed", () => {
+    assert.equal(getDayOfWeek(""), "");
+    assert.equal(getDayOfWeek("1/40/2021"), "");
+  });
+  it("should return Friday when the date passed in is '11/19/2021'", () => {
+    assert.equal(getDayOfWeek("11/19/2021"), "Friday");
   });
 });
