@@ -7,6 +7,7 @@ const {
   getDayOfWeek,
   addDays,
   formatTimeString,
+  formatMoney,
 } = require("./index");
 var assert = require("assert");
 
@@ -171,5 +172,33 @@ describe("formatTimeString", () => {
   });
   it("should return 8:00 am when input contains 8pm", () => {
     assert.equal(formatTimeString(new Date("1/1/2021 8:00 am")), "8:00 am");
+  });
+});
+
+describe("formatMoney", () => {
+  it("should return 1 when no decimals are present", () => {
+    assert.equal(formatMoney("1", 0), "1");
+  });
+  it("should return 1.0 when passed formatMoney('1', 1)", () => {
+    assert.equal(formatMoney("1", 1), "1.0");
+  });
+  it("should return 100.00 when passed formatMoney('100', 2)", () => {
+    assert.equal(formatMoney("100", 2), "100.00");
+  });
+  it("should return 1,000.00 when passed formatMoney('1000', 2)", () => {
+    assert.equal(formatMoney("1000", 2), "1,000.00");
+  });
+
+  it("should return -1 when no decimals are present", () => {
+    assert.equal(formatMoney("-1", 0), "-1");
+  });
+  it("should return -1.0 when passed formatMoney('-1', 1)", () => {
+    assert.equal(formatMoney("-1", 1), "-1.0");
+  });
+  it("should return -100.00 when passed formatMoney('-100', 2)", () => {
+    assert.equal(formatMoney("-100", 2), "-100.00");
+  });
+  it("should return -1,000.00 when passed formatMoney('-1000', 2)", () => {
+    assert.equal(formatMoney("-1000", 2), "-1,000.00");
   });
 });
