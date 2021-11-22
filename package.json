@@ -4,11 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test:jest":"jest ./src --coverage",
+    "test":"jest ./src --coverage",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "testWatch": "mocha src/**/*.js --watch",
-    "test": "mocha src/**/*.js",
+    "test1": "mocha src/**/*.js",
     "test:coverage": "npm run cover:unit && npm run cover:report",
     "test:coveragehtml": "npm run cover:unit && npm run cover:reporthtml",
     "cover:unit": "nyc --silent npm run test",
