@@ -202,6 +202,7 @@ const formatMoney = (
   }
 };
 
+// console.log(addDays("1/15/2021", 5));
 module.exports = {
   isValid,
   isValidDate,
