@@ -25,7 +25,7 @@ const {
   addDays,
   formatTimeString,
   formatMoney
-} = require("./index");
+} = require("c5-js-utils");
 
 # using import
 import {
