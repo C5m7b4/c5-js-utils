@@ -175,8 +175,8 @@ module.exports = {
   isValid,
   isValidDate,
   formatDate,
+  formatTimeString,
   pad,
   getDayOfWeek,
   addDays,
-  formatTimeString,
 };

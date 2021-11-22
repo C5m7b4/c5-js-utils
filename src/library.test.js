@@ -159,8 +159,17 @@ describe("addDays", () => {
   });
 });
 
-describe.only("formatTimeString", () => {
+describe("formatTimeString", () => {
   it("should return an empty string when input is undefined", () => {
     assert.equal(formatTimeString(undefined), "");
+  });
+  it("should return an empty string when input is null", () => {
+    assert.equal(formatTimeString(null), "");
+  });
+  it("should return 8:00 pm when input contains 8pm", () => {
+    assert.equal(formatTimeString(new Date("1/1/2021 8:00 pm")), "8:00 pm");
+  });
+  it("should return 8:00 am when input contains 8pm", () => {
+    assert.equal(formatTimeString(new Date("1/1/2021 8:00 am")), "8:00 am");
   });
 });
