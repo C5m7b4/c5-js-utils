@@ -16,10 +16,28 @@ yarn add c5-js-utils
 
 ```js
 # using require
-const { isValid, isValidDate, formatDate } = require('c5-js-utils');
+const {
+  isValid,
+  isValidDate,
+  formatDate,
+  pad,
+  getDayOfWeek,
+  addDays,
+  formatTimeString,
+  formatMoney
+} = require("./index");
 
 # using import
-import { isValid, isValidDate, formatDate } from 'c5-js-utils';
+import {
+  isValid,
+  isValidDate,
+  formatDate,
+  pad,
+  getDayOfWeek,
+  addDays,
+  formatTimeString,
+  formatMoney
+} from 'c5-js-utils';
 ```
 
 ## Example
