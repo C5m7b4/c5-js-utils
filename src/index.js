@@ -133,5 +133,31 @@ const getDayOfWeek = (d) => {
   }
 };
 
-console.log(getDayOfWeek("1/40/2021"));
-module.exports = { isValid, isValidDate, formatDate, pad, getDayOfWeek };
+const addDays = (date, days) => {
+  if (typeof date === "undefined" || date === null) {
+    return "";
+  }
+
+  if (typeof days === "undefined" || days === null) {
+    return "";
+  }
+
+  if (isNaN(days)) {
+    return "";
+  }
+
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+addDays("1/1/2021", "some string");
+
+module.exports = {
+  isValid,
+  isValidDate,
+  formatDate,
+  pad,
+  getDayOfWeek,
+  addDays,
+};

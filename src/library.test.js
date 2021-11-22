@@ -5,6 +5,7 @@ const {
   formatDate,
   pad,
   getDayOfWeek,
+  addDays,
 } = require("./index");
 var assert = require("assert");
 
@@ -117,7 +118,7 @@ describe("pad", () => {
   });
 });
 
-describe.only("getDayOfWeek", () => {
+describe("getDayOfWeek", () => {
   it("should return an empty string when no value is passed to it", () => {
     assert.equal(getDayOfWeek(), "");
   });
@@ -127,5 +128,32 @@ describe.only("getDayOfWeek", () => {
   });
   it("should return Friday when the date passed in is '11/19/2021'", () => {
     assert.equal(getDayOfWeek("11/19/2021"), "Friday");
+  });
+});
+
+describe.only("addDays", () => {
+  it("should return an empty string when no date is passed in", () => {
+    assert.equal(addDays(), "");
+  });
+  it("should return an empty string when the date passed in is undefined", () => {
+    assert.equal(addDays(undefined), "");
+  });
+  it("should return an empty string when the date passed in is null", () => {
+    assert.equal(addDays(null), "");
+  });
+  it("should return an empty string when the number of days is undefined", () => {
+    assert.equal(addDays("1/1/2021", undefined), "");
+  });
+  it("should return an empty string when the number of days is null", () => {
+    assert.equal(addDays("1/1/2021", null), "");
+  });
+  it("should return an empty string when the number of day is not a number", () => {
+    assert.equal(addDays("1/1/2021", "some string"), "");
+  });
+  it("should return '1/20/2021' when passed a '1/15/2021' with a value of 5 for days", () => {
+    assert.equal(
+      addDays("1/15/2021", 5),
+      new Date("2021-01-20T06:00:00.000Z").toString()
+    );
   });
 });
