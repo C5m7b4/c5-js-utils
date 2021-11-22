@@ -5,3 +5,4 @@ dist/
 coverage/
 .vscode/
 .env
+.nyc_output/
