@@ -151,7 +151,25 @@ const addDays = (date, days) => {
   return result;
 };
 
-addDays("1/1/2021", "some string");
+const formatTimeString = (date) => {
+  if (typeof date === "undefined" || date === null) return "";
+  if (date.length === 0) return "";
+
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
+  return strTime;
+};
+
+console.log(formatTimeString(new Date("1/1/2021 8:00 pm")));
 
 module.exports = {
   isValid,
@@ -160,4 +178,5 @@ module.exports = {
   pad,
   getDayOfWeek,
   addDays,
+  formatTimeString,
 };

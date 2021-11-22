@@ -6,6 +6,7 @@ const {
   pad,
   getDayOfWeek,
   addDays,
+  formatTimeString,
 } = require("./index");
 var assert = require("assert");
 
@@ -131,7 +132,7 @@ describe("getDayOfWeek", () => {
   });
 });
 
-describe.only("addDays", () => {
+describe("addDays", () => {
   it("should return an empty string when no date is passed in", () => {
     assert.equal(addDays(), "");
   });
@@ -155,5 +156,11 @@ describe.only("addDays", () => {
       addDays("1/15/2021", 5),
       new Date("2021-01-20T06:00:00.000Z").toString()
     );
+  });
+});
+
+describe.only("formatTimeString", () => {
+  it("should return an empty string when input is undefined", () => {
+    assert.equal(formatTimeString(undefined), "");
   });
 });
