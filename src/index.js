@@ -1,6 +1,9 @@
 const isValid = (val) => {
   // check to see if the value is undefined or null first
-  if (typeof val === "undefined" || val === null) {
+  if (typeof val === "undefined") {
+    return false;
+  }
+  if (val === null) {
     return false;
   }
 
@@ -106,30 +109,27 @@ const getDayOfWeek = (d) => {
   if (!isValid(d)) {
     return "";
   }
-  try {
-    const myDate = new Date(d);
-    const dayOfWeek = myDate.getDay();
-    if (isNaN(dayOfWeek)) {
-      return "";
-    }
-    switch (dayOfWeek) {
-      case 0:
-        return "Sunday";
-      case 1:
-        return "Monday";
-      case 2:
-        return "Tuesday";
-      case 3:
-        return "Wednesday";
-      case 4:
-        return "Thursday";
-      case 5:
-        return "Friday";
-      case 6:
-        return "Saturday";
-    }
-  } catch {
+
+  const myDate = new Date(d);
+  const dayOfWeek = myDate.getDay();
+  if (isNaN(dayOfWeek)) {
     return "";
+  }
+  switch (dayOfWeek) {
+    case 0:
+      return "Sunday";
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    case 6:
+      return "Saturday";
   }
 };
 
@@ -202,7 +202,7 @@ const formatMoney = (
   }
 };
 
-// console.log(addDays("1/15/2021", 5));
+console.log(formatTimeString("1/1/2021 8:00 am"));
 module.exports = {
   isValid,
   isValidDate,
