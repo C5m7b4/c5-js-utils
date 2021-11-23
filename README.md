@@ -1,4 +1,5 @@
-# c5-js-utils [![CircleCI](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main.svg?style=svg)](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main)[![codecov](https://codecov.io/gh/C5m7b4/c5-js-utils/branch/main/graph/badge.svg?token=4AVCZSKF6W)](https://codecov.io/gh/C5m7b4/c5-js-utils)
+# c5-js-utils [![CircleCI](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main.svg?style=svg)](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main)
+[![codecov](https://codecov.io/gh/C5m7b4/c5-js-utils/branch/main/graph/badge.svg?token=4AVCZSKF6W)](https://codecov.io/gh/C5m7b4/c5-js-utils)
 
 A group of javascript utilites for validating strings and objects/dates, as well as formatting dates an times.
 
