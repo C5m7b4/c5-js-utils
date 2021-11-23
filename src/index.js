@@ -199,8 +199,6 @@ const formatMoney = (
   );
 };
 
-// const myObj = { name: "mike", age: 47 };
-console.log(formatTimeString("1/1/2021 7:5 am"));
 module.exports = {
   isValid,
   isValidDate,
