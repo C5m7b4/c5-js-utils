@@ -13,6 +13,12 @@ const {
 test("should return false when empty string is passed in", () => {
   expect(isValid("")).toBe(false);
 });
+test("should return false when a null value is passed in", () => {
+  expect(isValid(null)).toBe(false);
+});
+test("should return false when an undefined value is passed in", () => {
+  expect(isValid(undefined)).toBe(false);
+});
 
 // var assert = require("assert");
 
