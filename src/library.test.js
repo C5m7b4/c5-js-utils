@@ -11,6 +11,7 @@ const {
   formatMoney,
 } = require("./index");
 
+// isValid
 test("should return false when empty string is passed in", () => {
   expect(isValid("")).toBe(false);
 });
@@ -20,6 +21,7 @@ test("should return false when a null value is passed in", () => {
 test("should return false when an undefined value is passed in", () => {
   expect(isValid(undefined)).toBe(false);
 });
+
 test("should return false when an object with no keys is passed in", () => {
   const myObj = {};
   expect(isValid(myObj)).toBe(false);
@@ -47,8 +49,15 @@ test("should return false when an invalid date object is passed in", () => {
   const newDate = new Date(stringDate);
   expect(isValidDate(newDate)).toBe(false);
 });
+test("should return false when an object that is not date is passed in", () => {
+  const myObj = { name: "mike", age: 47 };
+  expect(isValidDate(myObj)).toBe(false);
+});
 test("should return true when a new Date() object is passed in", () => {
   expect(isValidDate(new Date())).toBe(true);
+});
+test("should return false when a string is passed in that is not a valid date", () => {
+  expect(isValidDate("1/35/2021")).toBe(false);
 });
 test("should return true when a string representation of a date is passed in", () => {
   expect(isValidDate("1/1/2021")).toBe(true);
@@ -161,12 +170,9 @@ it("should return an empty string when the number of days is null", () => {
 it("should return an empty string when the number of day is not a number", () => {
   expect(addDays("1/1/2021", "some string")).toEqual("");
 });
-//   // it("should return '1/20/2021' when passed a '1/15/2021' with a value of 5 for days", () => {
-//   //   assert.equal(
-//   //     addDays("1/15/2021", 5),
-//   //     new Date("2021-01-20T06:00:00.000Z").toString()
-//   //   );
-//   // });
+it("should return '1/20/2021' when passed a '1/15/2021' with a value of 5 for days", () => {
+  expect(addDays("1/15/2021", 5)).toEqual(new Date("1/20/2021"));
+});
 
 // formatTimeString
 it("should return an empty string when input is undefined", () => {
@@ -175,11 +181,20 @@ it("should return an empty string when input is undefined", () => {
 it("should return an empty string when input is null", () => {
   expect(formatTimeString(null)).toEqual("");
 });
+it("should return an empty string if an empty string is passed in", () => {
+  expect(formatTimeString("")).toEqual("");
+});
 it("should return 8:00 pm when input contains 8pm", () => {
   expect(formatTimeString(new Date("1/1/2021 8:00 pm"))).toEqual("8:00 pm");
 });
 it("should return 8:00 am when input contains 8pm", () => {
   expect(formatTimeString(new Date("1/1/2021 8:00 am"))).toEqual("8:00 am");
+});
+it("should return 0:00 when just a date string is passed in", () => {
+  expect(formatTimeString("1/1/2021")).toEqual("12:00 am");
+});
+it("should return '7:15 am", () => {
+  expect(formatTimeString("1/1/2021 7:15 am")).toEqual("7:15 am");
 });
 
 // formatMoney
@@ -206,4 +221,7 @@ it("should return -100.00 when passed formatMoney('-100', 2)", () => {
 });
 it("should return -1,000.00 when passed formatMoney('-1000', 2)", () => {
   expect(formatMoney("-1000", 2)).toEqual("-1,000.00");
+});
+it("should return something when decimalCount is not a number", () => {
+  expect(formatMoney("1000", "n")).toEqual("1,000.00");
 });

@@ -40,6 +40,7 @@ const isValidDate = (val) => {
 
   if (typeof val === "string") {
     const newDate = new Date(val);
+
     if (Object.prototype.toString.call(newDate) === "[object Date]") {
       if (isNaN(newDate.getTime())) {
         return false;
@@ -153,9 +154,9 @@ const addDays = (date, days) => {
 
 const formatTimeString = (date) => {
   if (typeof date === "undefined" || date === null) return "";
-  if (date.length === 0) return "";
 
   if (typeof date === "string") {
+    if (date.length === 0) return "";
     date = new Date(date);
   }
 
@@ -175,34 +176,31 @@ const formatMoney = (
   decimal = ".",
   thousands = ","
 ) => {
-  try {
-    decimalCount = Math.abs(decimalCount);
-    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+  decimalCount = Math.abs(decimalCount);
+  decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
 
-    const negativeSign = amount < 0 ? "-" : "";
+  const negativeSign = amount < 0 ? "-" : "";
 
-    let i = parseInt(
-      (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
-    ).toString();
-    let j = i.length > 3 ? i.length % 3 : 0;
+  let i = parseInt(
+    (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+  ).toString();
+  let j = i.length > 3 ? i.length % 3 : 0;
 
-    return (
-      negativeSign +
-      (j ? i.substr(0, j) + thousands : "") +
-      i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
-      (decimalCount
-        ? decimal +
-          Math.abs(amount - i)
-            .toFixed(decimalCount)
-            .slice(2)
-        : "")
-    );
-  } catch (e) {
-    console.log(e);
-  }
+  return (
+    negativeSign +
+    (j ? i.substr(0, j) + thousands : "") +
+    i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+    (decimalCount
+      ? decimal +
+        Math.abs(amount - i)
+          .toFixed(decimalCount)
+          .slice(2)
+      : "")
+  );
 };
 
-console.log(formatTimeString("1/1/2021 8:00 am"));
+// const myObj = { name: "mike", age: 47 };
+console.log(formatTimeString("1/1/2021 7:5 am"));
 module.exports = {
   isValid,
   isValidDate,
