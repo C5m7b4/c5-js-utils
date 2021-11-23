@@ -19,3 +19,13 @@ workflows:
           version: "16.10"
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
+version: 2.1
+jobs:
+  Test-Output:
+    docker:
+      - image: alpine:3.7
+    steps:
+      - run:
+        name: Test basic output
+        command: |
+          echo 'Testing output'
