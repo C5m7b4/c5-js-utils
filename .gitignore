@@ -6,3 +6,4 @@ coverage/
 .vscode/
 .env
 .nyc_output/
+.test.txt

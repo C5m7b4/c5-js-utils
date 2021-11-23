@@ -6,13 +6,7 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "testWatch": "mocha src/**/*.js --watch",
-    "test": "mocha src/**/*.js",
-    "test:coverage": "npm run cover:unit && npm run cover:report",
-    "test:coveragehtml": "npm run cover:unit && npm run cover:reporthtml",
-    "cover:unit": "nyc --silent npm run test",
-    "cover:report": "nyc report --reporter=lcov --reporter=text --report-dir='./coverage'",
-    "cover:reporthtml": "nyc report --reporter-html --report-dir='./coverage'"
+    "test":"jest"
   },
   "keywords": [],
   "author": "",
