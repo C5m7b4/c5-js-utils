@@ -18,7 +18,7 @@ jobs:
       - run:
           name: run unit tests
           command: |
-            npm install && npm test && coverage
+            npm install && npm test
       - codecov/upload:
           file: "./coverage/clover.xml"
           token: f5dfcd1f-db14-4d13-9dd8-7d84fff0a594
