@@ -7,7 +7,7 @@ const {
   pad,
   getDayOfWeek,
   addDays,
-  // formatTimeString,
+  formatTimeString,
   // formatMoney,
 } = require("./index");
 
@@ -168,20 +168,19 @@ it("should return an empty string when the number of day is not a number", () =>
 //   //   );
 //   // });
 
-// describe("formatTimeString", () => {
-//   it("should return an empty string when input is undefined", () => {
-//     assert.equal(formatTimeString(undefined), "");
-//   });
-//   it("should return an empty string when input is null", () => {
-//     assert.equal(formatTimeString(null), "");
-//   });
-//   it("should return 8:00 pm when input contains 8pm", () => {
-//     assert.equal(formatTimeString(new Date("1/1/2021 8:00 pm")), "8:00 pm");
-//   });
-//   it("should return 8:00 am when input contains 8pm", () => {
-//     assert.equal(formatTimeString(new Date("1/1/2021 8:00 am")), "8:00 am");
-//   });
-// });
+// formatTimeString
+it("should return an empty string when input is undefined", () => {
+  expect(formatTimeString(undefined)).toEqual("");
+});
+it("should return an empty string when input is null", () => {
+  expect(formatTimeString(null)).toEqual("");
+});
+it("should return 8:00 pm when input contains 8pm", () => {
+  expect(formatTimeString(new Date("1/1/2021 8:00 pm"))).toEqual("8:00 pm");
+});
+it("should return 8:00 am when input contains 8pm", () => {
+  expect(formatTimeString(new Date("1/1/2021 8:00 am"))).toEqual("8:00 am");
+});
 
 // describe("formatMoney", () => {
 //   it("should return 1 when no decimals are present", () => {
