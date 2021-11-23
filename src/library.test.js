@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const {
   isValid,
-  // isValidDate,
+  isValidDate,
   // formatDate,
   // pad,
   // getDayOfWeek,
@@ -31,27 +31,30 @@ test("should return true when a valid object is passed in", () => {
   expect(isValid(myObj)).toBe(true);
 });
 
-// var assert = require("assert");
+// isValidDate
+test("should return false when an empty string is passed in", () => {
+  expect(isValidDate("")).toBe(false);
+});
+test("should return false when null value is present", () => {
+  expect(isValidDate(null)).toBe(false);
+});
+test("should return false when an undefined value is passed in", () => {
+  expect(isValidDate(undefined)).toBe(false);
+});
+test("should return false when an invalid date object is passed in", () => {
+  const stringDate = "1/35/2021";
+  const newDate = new Date(stringDate);
+  expect(isValidDate(newDate)).toBe(false);
+});
+test("should return true when a new Date() object is passed in", () => {
+  expect(isValidDate(new Date())).toBe(true);
+});
+test("should return true when a string representation of a date is passed in", () => {
+  expect(isValidDate("1/1/2021")).toBe(true);
+});
 
 // describe("isValidDate", () => {
-//   it("should return false when an empty valid is present", () => {
-//     assert.equal(isValidDate(""), false);
-//   });
-//   it("should return false when null value is present", () => {
-//     assert.equal(isValidDate(null), false);
-//   });
-//   it("should return false when an undefined value is passed in", () => {
-//     assert.equal(isValidDate(undefined), false);
-//   });
-//   it("should return false when an invalid Date object is passed in", () => {
-//     const stringDate = "1/35/2021";
-//     const newDate = new Date(stringDate);
-//     assert.equal(isValidDate(newDate), false);
-//   });
-//   it("should return true when a new Date() object is passed in", () => {
-//     const newDate = new Date();
-//     assert.equal(isValidDate(newDate), true);
-//   });
+
 //   it("should return true when a string representation of a date is passed in", () => {
 //     assert.equal(isValidDate("1/1/2021"), true);
 //   });

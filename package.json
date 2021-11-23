@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test":"jest"
+    "test":"jest",
+    "test:watch":"jest --watch"
   },
   "keywords": [],
   "author": "",
