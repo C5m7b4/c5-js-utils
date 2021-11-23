@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
+
 const {
   isValid,
   isValidDate,
-  // formatDate,
-  // pad,
+  formatDate,
+  pad,
   // getDayOfWeek,
   // addDays,
   // formatTimeString,
@@ -53,73 +54,63 @@ test("should return true when a string representation of a date is passed in", (
   expect(isValidDate("1/1/2021")).toBe(true);
 });
 
-// describe("isValidDate", () => {
+// FormatDate
+test("should return an empty string when undefined value is specified", () => {
+  expect(formatDate(undefined)).toBe("");
+});
+test("should return an empty string when a null value is specified", () => {
+  expect(formatDate(null)).toBe("");
+});
+test("should return an empty string if an empty string is passed in", () => {
+  expect(formatDate("")).toBe("");
+});
+test("should return an empty string if an object is passed in", () => {
+  const myObj = { name: "mike", age: 47 };
+  expect(formatDate(myObj)).toBe("");
+});
+test("should return a formatted date if a string date is passed in", () => {
+  expect(formatDate("1/1/2021")).toBe("1/1/2021");
+});
+test("should return a formatted date if a date object is passed in with the time", () => {
+  const stringDate = "11/12/2021 5:00 pm";
+  const newDate = new Date(stringDate);
+  expect(formatDate(newDate)).toBe("11/12/2021");
+});
 
-//   it("should return true when a string representation of a date is passed in", () => {
-//     assert.equal(isValidDate("1/1/2021"), true);
-//   });
-// });
-
-// describe("formatDate", () => {
-//   it("should return an empty string when undefinded value is specified", () => {
-//     assert.equal(formatDate(undefined), "");
-//   });
-//   it("should return an empty string when a null value is specified", () => {
-//     assert.equal(formatDate(null), "");
-//   });
-//   it("should return an empty string if an empty string is passed in", () => {
-//     assert.equal(formatDate(""), "");
-//   });
-//   it("should return an empty string if an object is passed in", () => {
-//     const myObj = { name: "mike", age: "47" };
-//     assert.equal(formatDate(myObj), "");
-//   });
-//   it("should return a formatted date if a string date is passed in", () => {
-//     const stringDate = "1/1/2021 5:00 pm";
-//     assert.equal(formatDate(stringDate), "1/1/2021");
-//   });
-//   it("should return a formatted date if a date object is passed in with the time", () => {
-//     const stringDate = "1/1/2021 5:00 pm";
-//     const newDate = new Date(stringDate);
-//     assert.equal(formatDate(newDate), "1/1/2021");
-//   });
-// });
-
-// describe("pad", () => {
-//   it("should return the object passed in when passing in an object. Only works on strings", () => {
-//     const myObj = { name: "mike", age: 47 };
-//     assert.equal(pad(myObj), myObj);
-//   });
-//   it("should return entire string when desiredLength is undefined", () => {
-//     assert(pad("123"), "123");
-//     assert(pad("123", undefined), "123");
-//   });
-//   it("should return entire string when desiredLength is null", () => {
-//     assert.equal(pad("123", null), "123");
-//   });
-//   it("should return the entire string when the desiredLength is not a number", () => {
-//     assert.equal(pad("123", "5"), "123");
-//   });
-//   it("should return entire string when padchar is undefined", () => {
-//     assert.equal(pad("123", 5), "123");
-//     assert.equal(pad("123", 5, undefined), "123");
-//   });
-//   it("should return entire string when padchar is null", () => {
-//     assert.equal(pad("123", 5, null), "123");
-//   });
-//   it("should return entire string when padChar is not a string", () => {
-//     assert.equal(pad("123", 5, 5), "123");
-//   });
-//   it("should return entire string if desiredLength is <= the length of the input", () => {
-//     assert.equal(pad("123", 3, "0"), "123");
-//   });
-//   it("should return 00123 when input is '123' and desiredLength = 5 and padChar = '0'", () => {
-//     assert.equal(pad("123", 5, "0"), "00123");
-//   });
-//   it("should return 12300 when desiredLength = 5 and padChar = '0' and direction='right", () => {
-//     assert.equal(pad("123", 5, "0", "right"), "12300");
-//   });
-// });
+// Pad
+test("should return the object passed in when passing in an object. Only works on strings", () => {
+  const myObj = { name: "mike", age: 47 };
+  expect(pad(myObj)).toMatchObject(myObj);
+});
+test("should return entire string when desiredLength is undefined", () => {
+  expect(pad("123")).toEqual("123");
+  expect(pad("123", undefined)).toEqual("123");
+});
+it("should return entire string when desiredLength is null", () => {
+  expect(pad("123", null)).toEqual("123");
+});
+it("should return the entire string when the desiredLength is not a number", () => {
+  expect(pad("123", "5")).toEqual("123");
+});
+it("should return entire string when padchar is undefined", () => {
+  expect(pad("123", 5)).toEqual("123");
+  expect(pad("123", 5, undefined)).toEqual("123");
+});
+it("should return entire string when padchar is null", () => {
+  expect(pad("123", 5, null)).toEqual("123");
+});
+it("should return entire string when padChar is not a string", () => {
+  expect(pad("123", 5, 5)).toEqual("123");
+});
+it("should return entire string if desiredLength is <= the length of the input", () => {
+  expect(pad("123", 3, "0")).toEqual("123");
+});
+it("should return 00123 when input is '123' and desiredLength = 5 and padChar = '0'", () => {
+  expect(pad("123", 5, "0")).toEqual("00123");
+});
+it("should return 12300 when desiredLength = 5 and padChar = '0' and direction='right", () => {
+  expect(pad("123", 5, "0", "right")).toEqual("12300");
+});
 
 // describe("getDayOfWeek", () => {
 //   it("should return an empty string when no value is passed to it", () => {

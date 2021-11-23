@@ -1,6 +1,6 @@
 # c5-js-utils [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC) [![CircleCI](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main.svg?style=svg)](https://circleci.com/gh/C5m7b4/c5-js-utils/tree/main) [![codecov](https://codecov.io/gh/C5m7b4/c5-js-utils/branch/main/graph/badge.svg?token=4AVCZSKF6W)](https://codecov.io/gh/C5m7b4/c5-js-utils)
 
-A group of javascript utilites for validating strings and objects/dates, as well as formatting dates an times.
+A group of javascript utilites for validating strings and objects/dates, as well as formatting dates and times.
 
 ## Installation
 
