@@ -6,7 +6,7 @@ const {
   formatDate,
   pad,
   getDayOfWeek,
-  // addDays,
+  addDays,
   // formatTimeString,
   // formatMoney,
 } = require("./index");
@@ -142,32 +142,31 @@ it("should return Saturday when the date passed in is '11/27/2021'", () => {
   expect(getDayOfWeek("11/27/2021")).toEqual("Saturday");
 });
 
-// describe("addDays", () => {
-//   it("should return an empty string when no date is passed in", () => {
-//     assert.equal(addDays(), "");
-//   });
-//   it("should return an empty string when the date passed in is undefined", () => {
-//     assert.equal(addDays(undefined), "");
-//   });
-//   it("should return an empty string when the date passed in is null", () => {
-//     assert.equal(addDays(null), "");
-//   });
-//   it("should return an empty string when the number of days is undefined", () => {
-//     assert.equal(addDays("1/1/2021", undefined), "");
-//   });
-//   it("should return an empty string when the number of days is null", () => {
-//     assert.equal(addDays("1/1/2021", null), "");
-//   });
-//   it("should return an empty string when the number of day is not a number", () => {
-//     assert.equal(addDays("1/1/2021", "some string"), "");
-//   });
+// addDays
+it("should return an empty string when no date is passed in", () => {
+  expect(addDays()).toEqual("");
+});
+it("should return an empty string when the date passed in is undefined", () => {
+  expect(addDays(undefined)).toEqual("");
+});
+it("should return an empty string when the date passed in is null", () => {
+  expect(addDays(null)).toEqual("");
+});
+it("should return an empty string when the number of days is undefined", () => {
+  expect(addDays("1/1/2021", undefined)).toEqual("");
+});
+it("should return an empty string when the number of days is null", () => {
+  expect(addDays("1/1/2021", null)).toEqual("");
+});
+it("should return an empty string when the number of day is not a number", () => {
+  expect(addDays("1/1/2021", "some string")).toEqual("");
+});
 //   // it("should return '1/20/2021' when passed a '1/15/2021' with a value of 5 for days", () => {
 //   //   assert.equal(
 //   //     addDays("1/15/2021", 5),
 //   //     new Date("2021-01-20T06:00:00.000Z").toString()
 //   //   );
 //   // });
-// });
 
 // describe("formatTimeString", () => {
 //   it("should return an empty string when input is undefined", () => {
