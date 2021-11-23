@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   test-output:
     docker:
@@ -17,6 +19,9 @@ jobs:
           name: run unit tests
           command: |
             npm install && npm test
+      - codecov/upload:
+          file: "./coverage/clover.xml"
+          token: f5dfcd1f-db14-4d13-9dd8-7d84fff0a594
 workflows:
   version: 2
   Example_Workflow:
