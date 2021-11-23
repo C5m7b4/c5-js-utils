@@ -1,10 +1,25 @@
 version: 2.1
 jobs:
-  Test-Output:
+  test-output:
     docker:
       - image: alpine:3.7
     steps:
       - run:
-        name: Test basic output
-        command: |
-          echo 'Testing output'
+          name: Test basic output
+          command: |
+            echo 'Testing output'
+  build:
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - run:
+          name: run unit tests
+          command: |
+            npm install and run tests
+workflows:
+  version: 2
+  Example_Workflow:
+    jobs:
+      - test-output
+      - build
