@@ -5,7 +5,7 @@ const {
   isValidDate,
   formatDate,
   pad,
-  // getDayOfWeek,
+  getDayOfWeek,
   // addDays,
   // formatTimeString,
   // formatMoney,
@@ -112,18 +112,35 @@ it("should return 12300 when desiredLength = 5 and padChar = '0' and direction='
   expect(pad("123", 5, "0", "right")).toEqual("12300");
 });
 
-// describe("getDayOfWeek", () => {
-//   it("should return an empty string when no value is passed to it", () => {
-//     assert.equal(getDayOfWeek(), "");
-//   });
-//   it("should return an empty string when a non valid date string is passed", () => {
-//     assert.equal(getDayOfWeek(""), "");
-//     assert.equal(getDayOfWeek("1/40/2021"), "");
-//   });
-//   it("should return Friday when the date passed in is '11/19/2021'", () => {
-//     assert.equal(getDayOfWeek("11/19/2021"), "Friday");
-//   });
-// });
+// getDayOfWeek
+it("should return an empty string when no value is passed to it", () => {
+  expect(getDayOfWeek()).toBe("");
+});
+it("should return an empty string when a non valid date string is passed", () => {
+  expect(getDayOfWeek("")).toBe("");
+  expect(getDayOfWeek("1/40/2021")).toBe("");
+});
+it("should return Sunday when the date passed in is '11/21/2021'", () => {
+  expect(getDayOfWeek("11/21/2021")).toEqual("Sunday");
+});
+it("should return Monday when the date passed in is '11/22/2021'", () => {
+  expect(getDayOfWeek("11/22/2021")).toEqual("Monday");
+});
+it("should return Tuesday when the date passed in is '11/23/2021'", () => {
+  expect(getDayOfWeek("11/23/2021")).toEqual("Tuesday");
+});
+it("should return Wednesday when the date passed in is '11/24/2021'", () => {
+  expect(getDayOfWeek("11/24/2021")).toEqual("Wednesday");
+});
+it("should return Thursday when the date passed in is '11/25/2021'", () => {
+  expect(getDayOfWeek("11/25/2021")).toEqual("Thursday");
+});
+it("should return Friday when the date passed in is '11/26/2021'", () => {
+  expect(getDayOfWeek("11/26/2021")).toEqual("Friday");
+});
+it("should return Saturday when the date passed in is '11/27/2021'", () => {
+  expect(getDayOfWeek("11/27/2021")).toEqual("Saturday");
+});
 
 // describe("addDays", () => {
 //   it("should return an empty string when no date is passed in", () => {
