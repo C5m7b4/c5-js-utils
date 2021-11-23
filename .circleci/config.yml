@@ -16,7 +16,7 @@ jobs:
       - run:
           name: run unit tests
           command: |
-            npm install and run tests
+            npm install and npm test
 workflows:
   version: 2
   Example_Workflow:
