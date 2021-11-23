@@ -19,32 +19,19 @@ test("should return false when a null value is passed in", () => {
 test("should return false when an undefined value is passed in", () => {
   expect(isValid(undefined)).toBe(false);
 });
+test("should return false when an object with no keys is passed in", () => {
+  const myObj = {};
+  expect(isValid(myObj)).toBe(false);
+});
+test("should return true when a valid string is passed in", () => {
+  expect(isValid("hello")).toBe(true);
+});
+test("should return true when a valid object is passed in", () => {
+  const myObj = { name: "mike", age: 47 };
+  expect(isValid(myObj)).toBe(true);
+});
 
 // var assert = require("assert");
-
-// describe("isValid", () => {
-//   it("should return false when an empty valid is present", () => {
-//     assert.equal(isValid(""), false);
-//   });
-//   it("should return false when null value is present", () => {
-//     assert.equal(isValid(null), false);
-//   });
-//   it("should return false when an undefined value is passed in", () => {
-//     assert.equal(isValid(undefined), false);
-//   });
-//   it("should return false when an object with no keys is passed in", () => {
-//     const myObj = {};
-//     assert.equal(isValid(myObj), false);
-//   });
-
-//   it("should return true when a valid string is passed in", () => {
-//     assert.equal(isValid("Hello"), true);
-//   });
-//   it("should return true when an object with keys is passed in", () => {
-//     const myObj = { name: "Mike", age: 47 };
-//     assert.equal(isValid(myObj), true);
-//   });
-// });
 
 // describe("isValidDate", () => {
 //   it("should return false when an empty valid is present", () => {
